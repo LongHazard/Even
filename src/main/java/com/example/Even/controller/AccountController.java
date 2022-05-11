@@ -3,6 +3,7 @@ package com.example.Even.controller;
 import com.example.Even.model.Account;
 import com.example.Even.model.Event;
 import com.example.Even.payload.AccountPayload;
+import com.example.Even.payload.AccountPayload1;
 import com.example.Even.repository.AccountRepository;
 import com.example.Even.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,15 @@ public class AccountController {
     AccountRepository accountRepository;
     @Autowired
     EventRepository eventRepository;
-
+//
     @GetMapping("findAll")
     ResponseEntity<List<Account>> findAll() {
         return ResponseEntity.ok().body(accountRepository.findAll());
+    }
+
+    @PostMapping("create1")
+    public ResponseEntity<Account> create(@RequestBody Account account){
+        return ResponseEntity.ok().body(accountRepository.save(account));
     }
 
     @PostMapping("create")
@@ -42,6 +48,9 @@ public class AccountController {
         }
         return ResponseEntity.ok().body(accountRepository.save(account));
     }
+
+
+
 
     @DeleteMapping("delete")
     public ResponseEntity<?> delete(@RequestParam("idAccount") Long idAccount) {

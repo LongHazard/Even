@@ -23,9 +23,11 @@ public class Event {
     private String evenName;
     private Long startDate;
     private Long endDate;
+    @Column
+    @ElementCollection(targetClass=String.class)
+    private Set<String> attendessName;
 //    @JsonIgnore
 //    @ManyToMany(mappedBy = "setEvents",fetch = FetchType.LAZY ,cascade = {CascadeType.ALL})
 //        private Set<Account> setAccounts = new HashSet<>();
-
 
 }
